@@ -65,4 +65,4 @@ order by name ASC;
 select firstName, lastName, p.pid
 from People p
 left join Agents a on a.pid = p.pid
-left join Customers c on c.pid = a.pid;
+left join Customers c on c.pid = a.pid; 
