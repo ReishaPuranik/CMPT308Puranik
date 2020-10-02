@@ -29,7 +29,8 @@ where pid not in (select custId from orders));
 /* 5 */
 select firstname
 from People p inner join Customers c on p.pid = c.pid
-   			left outer join Orders o on c.pid = o.custId;
+   			left outer join Orders o on c.pid = o.custId
+where o.prodId is null;
 
 /* 6 */
 select pid, commissionPct
