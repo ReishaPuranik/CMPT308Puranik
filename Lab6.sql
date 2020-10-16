@@ -30,7 +30,7 @@ from People p inner join Customers c on p.pid = c.pid
 			  inner join Orders o2 on c.pid = o2.custId
 			  inner join People p1 on p1.pid = o2.custId
 order by p.lastName DESC;
-
+ 
 
 /* 5 */
 select p.firstName as customerFirstName,
