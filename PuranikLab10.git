@@ -1,0 +1,37 @@
+/* 1 */
+create or replace function PreReqsFor(int, REFCURSOR) returns refcursor as 
+$$
+declare  
+   preReqsForCourse   int       := $1;
+   resultset          REFCURSOR := $2;
+begin
+   open resultset for 
+      select courseNum, preReqNum
+      from   Prerequisites
+       where  courseNum = preReqsForCourse;
+   return resultset;
+end;
+$$ 
+language plpgsql;
+
+select PreReqsFor(499, 'results');
+Fetch all from results;
+
+/* 2 */
+create or replace function IsPreReqFor(int, REFCURSOR) returns refcursor as 
+$$
+declare  
+   coursesForPrereq   int       := $1;
+   resultset          REFCURSOR := $2;
+begin
+   open resultset for 
+      select courseNum, preReqNum
+      from   Prerequisites
+       where  preReqNum = coursesForPrereq;
+   return resultset;
+end;
+$$ 
+language plpgsql;
+
+select IsPreReqFor(499, 'results');
+Fetch all from results;
